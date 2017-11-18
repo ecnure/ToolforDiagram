@@ -31,7 +31,7 @@ import javax.swing.filechooser.FileFilter;
 
 public class Main extends JFrame implements ActionListener {
 	public static String errmes = "";
-	public static int errstate = 0;// 0Ã»´íÎó 1Ïß´íÎó 2ÐèÇó½»»¥´íÎó
+	public static int errstate = 0;// 0Ã»ï¿½ï¿½ï¿½ï¿½ 1ï¿½ß´ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ó½»»ï¿½ï¿½ï¿½ï¿½ï¿½
 	JMenuBar menuBar = new JMenuBar();
 	JMenu file = new JMenu("File");
 	JMenu help = new JMenu("Help");
@@ -287,7 +287,7 @@ public class Main extends JFrame implements ActionListener {
 			}
 
 			public String getDescription() {
-				return "¹¤³ÌÎÄ¼þ(*.yb)";
+				return "ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½(*.yb)";
 			}
 		});
 		int r = this.chooser.showOpenDialog(this);
@@ -679,72 +679,72 @@ public class Main extends JFrame implements ActionListener {
 	}
 
 	private void toolBarInit() {
-		this.b_givendomain = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/rect.jpg"));
+		this.b_givendomain = new JToggleButton(new ImageIcon("./src/icons/rect.jpg"));//src/icons/rect.jpg
 		this.b_givendomain.addActionListener(this);
 		this.b_givendomain.setToolTipText("GivenDomain");
 		this.b_givendomain.setActionCommand("Draw_GivenDomain");
 
 		this.b_designeddomain = new JToggleButton(new ImageIcon(
-				"C:/Users/lyt-/Desktop/workplace/demo/src/icons/drect.jpg"));
+				"./src/icons/drect.jpg"));
 		this.b_designeddomain.addActionListener(this);
 		this.b_designeddomain.setToolTipText("DesignedDomain");
 		this.b_designeddomain.setActionCommand("Draw_DesignedDomain");
 
-		this.b_machine = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/machine.jpg"));
+		this.b_machine = new JToggleButton(new ImageIcon("./src/icons/machine.jpg"));
 		this.b_machine.addActionListener(this);
 		this.b_machine.setToolTipText("Machine");
 		this.b_machine.setActionCommand("Draw_Machine");
 
-		this.b_requirement = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/r.jpg"));
+		this.b_requirement = new JToggleButton(new ImageIcon("./src/icons/r.jpg"));
 		this.b_requirement.addActionListener(this);
 		this.b_requirement.setToolTipText("Requirement");
 		this.b_requirement.setActionCommand("Draw_Requirement");
 
-		this.b_interface = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/i.jpg"));
+		this.b_interface = new JToggleButton(new ImageIcon("./src/icons/i.jpg"));
 		this.b_interface.addActionListener(this);
 		this.b_interface.setToolTipText("Interface");
 		this.b_interface.setActionCommand("Draw_Interface");
 
 		this.b_requirementconstraint = new JToggleButton(new ImageIcon(
-				"C:/Users/lyt-/Desktop/workplace/demo/src/icons/rc.jpg"));
+				"./src/icons/rc.jpg"));
 		this.b_requirementconstraint.addActionListener(this);
 		this.b_requirementconstraint.setToolTipText("RequirementConstraint");
 		this.b_requirementconstraint
 				.setActionCommand("Draw_RequirementConstraint");
 
 		this.b_requirementreference = new JToggleButton(new ImageIcon(
-				"C:/Users/lyt-/Desktop/workplace/demo/src/icons/rr.jpg"));
+				"./src/icons/rr.jpg"));
 		this.b_requirementreference.addActionListener(this);
 		this.b_requirementreference.setToolTipText("RequirementReference");
 		this.b_requirementreference
 				.setActionCommand("Draw_RequirementReference");
 
-		this.b_hong = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/hong.jpg"));
+		this.b_hong = new JToggleButton(new ImageIcon("./src/icons/hong.jpg"));
 		this.b_hong.addActionListener(this);
 		this.b_hong.setActionCommand("Hong");
 		this.b_hong.setToolTipText("behEna");
 
-		this.b_lan = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/lan.jpg"));
+		this.b_lan = new JToggleButton(new ImageIcon("./src/icons/lan.jpg"));
 		this.b_lan.addActionListener(this);
 		this.b_lan.setActionCommand("Lan");
 		this.b_lan.setToolTipText("behOrd");
 
-		this.b_lv = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/lv.jpg"));
+		this.b_lv = new JToggleButton(new ImageIcon("./src/icons/lv.jpg"));
 		this.b_lv.addActionListener(this);
 		this.b_lv.setActionCommand("Lv");
 		this.b_lv.setToolTipText("synchrocity");
 
-		this.b_cheng = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/cheng.jpg"));
+		this.b_cheng = new JToggleButton(new ImageIcon("./src/icons/cheng.jpg"));
 		this.b_cheng.addActionListener(this);
 		this.b_cheng.setActionCommand("Cheng");
 		this.b_cheng.setToolTipText("expOrd");
 
-		this.b_zi = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/zi.jpg"));
+		this.b_zi = new JToggleButton(new ImageIcon("./src/icons/zi.jpg"));
 		this.b_zi.addActionListener(this);
 		this.b_zi.setActionCommand("Zi");
 		this.b_zi.setToolTipText("reqEna");
 
-		this.b_cheng_y = new JToggleButton(new ImageIcon("C:/Users/lyt-/Desktop/workplace/demo/src/icons/y_cheng.jpg"));
+		this.b_cheng_y = new JToggleButton(new ImageIcon("./src/icons/y_cheng.jpg"));
 		this.b_cheng_y.addActionListener(this);
 		this.b_cheng_y.setActionCommand("Cheng_y");
 		this.b_cheng_y.setToolTipText("Int");
