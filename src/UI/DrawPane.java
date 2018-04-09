@@ -1,5 +1,4 @@
 package UI;
-
 import Ontology.Ontology_c;
 import Shape.Data;
 import Shape.Diagram;
@@ -26,7 +25,7 @@ public class DrawPane extends JPanel implements ActionListener {
 	public int i = 0;
 	Ontology_c ont;
 	JLabel[] jLabel = new JLabel[16];
-
+	
 	public static void main(String[] args) {
 	}
 
@@ -89,13 +88,13 @@ public class DrawPane extends JPanel implements ActionListener {
 		this.jLabel[6].setText("   1,Identify requirements");
 		this.jLabel[7].setText("   2,Identify references");
 		this.jLabel[8].setText("   3,Check problem diagram");
-		this.jLabel[9].setText("Step 3:Construct the scenario graphs");
+		/*this.jLabel[9].setText("Step 3:Construct the scenario graphs");
 		this.jLabel[10].setText("   1,Draw scenario graph");
 		this.jLabel[11].setText("   2,Check scenario graph");
 		this.jLabel[12].setText("Step 4:Perform the problem projection");
 		this.jLabel[13].setText("   1,Check well-formed scenario");
-		this.jLabel[14].setText("   2,Perform projection");
-		this.jLabel[15].setText("Finish");
+		this.jLabel[14].setText("   2,Perform projection");*/
+		this.jLabel[9].setText("Finish");
 	}
 
 	private void setallnon() {
@@ -235,6 +234,71 @@ public class DrawPane extends JPanel implements ActionListener {
 			}
 			return;
 		}
+		
+		
+		
+		if (this.i == 31) {
+		/*Line a[]=new Line[20];
+			Line b[]=new Line[20];
+			int l=0;
+			int q=0;
+			LinkedList<Rect> domlist=new LinkedList<>();
+			Line line2 = null;
+			Line line3=null;
+			domlist=Persist.getProDom2(Main.win.myProblemDiagram);
+			LinkedList<Oval> reqlist=new LinkedList<>();	
+			reqlist=Persist.getReqOval(Main.win.myProblemDiagram);
+			StringBuffer linexy=new StringBuffer();
+		 for(int i=0;i<domlist.size();i++){
+			 for(int j=0;j<reqlist.size();j++){
+			Rect n=domlist.get(i);
+			System.out.println("pppppppp");
+			System.out.println(domlist.get(i).getShortName());
+			System.out.println("pppppppp");
+			Oval m=reqlist.get(j);
+			line2 = Main.win.myProblemDiagram.findALine(n, m);
+			line3=Main.win.myProblemDiagram.findALine(m, n);
+			if(line2!=null) {a[l]=line2; l++;}
+			if(line3!=null){a[q]=line3;q++;}
+				
+			 }}
+			
+			
+			*/	
+		if (checkContextDiagram()) {
+			Object[] bs = { "OK" };
+
+				int k = JOptionPane.showOptionDialog(Main.win,
+						"The diagram is correct!", "Tip", 0, 1, null, bs, null);
+
+				
+				Diagram tmp_d = new Diagram("");
+				Persist.save(new File("tmp"), Main.win.myProblemDiagram);
+				tmp_d = Persist.load(new File("tmp"));
+				
+				Diagram kk = convertToProblemDiagram2("problemdiagram" );////
+                setState(4);
+				kk.setLineName();
+				Main.win.myProblemDiagram = kk;
+				MyPane xin = new MyPane(kk);
+			
+				Main.win.myDisplayPane.removePane("problemdiagram");/////	
+				Main.win.myDisplayPane.addPane(xin, "problemdiagram");
+				Main.win.myInfoPane.treeAdd(1, 0, "");
+			} else {
+				Object[] bs = { "OK" };
+
+				int k = JOptionPane.showOptionDialog(Main.win,
+						"The diagram is wrong!", "Tip", 0, 0, null, bs, null);
+
+				setState(0);
+			}
+			return;
+		}
+		
+		
+		
+		
 		if (this.i == 4) {
 			Object[] bs = { "Yes", "No" };
 
@@ -261,7 +325,7 @@ public class DrawPane extends JPanel implements ActionListener {
 		}
 		if (this.i == 6) {
 			//if (checkProblemDiagram()) {                 //////////////////////////////
-			if (checkProblemDiagram()) {//////////////////////////////////// 
+		/*	if (checkProblemDiagram()) {//////////////////////////////////// 
 				Object[] bs = { "OK" };
 
 				int k = JOptionPane.showOptionDialog(Main.win,
@@ -337,7 +401,7 @@ public class DrawPane extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(Main.win, "OK!");
 
 			setState(11);
-			return;
+			return; */
 		}
 	}
 
@@ -508,4 +572,192 @@ public class DrawPane extends JPanel implements ActionListener {
 		return new Ontology_c().check(Main.win.myProblemDiagram,
 				"ProblemDiagram");
 	}
+	
+	
+	
+	
+	
+	public Diagram convertToProblemDiagram2(String name) {  /////add---
+		String []core=Persist.getline2core(Main.win.myProblemDiagram);
+		String []core1=Persist.getline2core1(Main.win.myProblemDiagram);
+		String l=Persist.getline2core1s(Main.win.myProblemDiagram);
+		System.out.println("0000"+core.length);
+		System.out.println("1223"+core1.length);
+		System.out.println("kkkkkkkkkk"+l);
+		for(int i=0;i<core.length;i++){
+			
+			System.out.println(core[i]);
+			
+		}
+        for(int i=0;i<core1.length;i++){
+			
+			System.out.println(core1[i]);
+			
+		}
+		int maxx = 0;
+		int miny = 0;
+		int maxy = 0;
+		Diagram tmp_d = new Diagram("");
+		Persist.save(new File("tmp"), Main.win.myContextDiagram);
+		tmp_d = Persist.load(new File("tmp"));
+		tmp_d.setTitle(name);
+
+		LinkedList ll = Main.win.myProblemDiagram.getRequirements();
+		
+	
+			Oval tmp_o = (Oval) ll.get(0);
+
+
+			
+			
+			LinkedList<Rect> domlist=new LinkedList<>();
+			domlist=Persist.getProDom2(Main.win.myProblemDiagram);
+			LinkedList<Oval> reqlist=new LinkedList<>();	
+			reqlist=Persist.getReqOval(Main.win.myProblemDiagram);
+			        Line a[]=new Line[20];
+					Line b[]=new Line[20];
+					int w=0;
+					int q=0;
+			
+					Line line2 = null;
+					Line line3=null;		
+						
+		         Phenomenon []yy=new Phenomenon[10];
+		         int con=0;
+				 for(int z=0;z<domlist.size();z++){
+					 for(int j=0;j<reqlist.size();j++){
+					Rect n=domlist.get(z);
+					System.out.println("pppppppp");
+					System.out.println(domlist.get(z).getShortName());
+					System.out.println("pppppppp");
+					Oval m=reqlist.get(j);
+					line2 = Main.win.myProblemDiagram.findALine(n, m);
+					line3=Main.win.myProblemDiagram.findALine(m, n);
+					if(line2!=null) {a[w]=line2;w++;}
+					if(line3!=null){b[q]=line3;q++;}}	
+					 }
+			
+					
+					
+					
+					
+			int k=0;
+			int s=0;
+			int t=0;
+			int h=0;
+		    for (int i = 0; i < tmp_d.components.size(); i++) {
+				Shape tmp = (Shape) tmp_d.components.get(i);
+				if (tmp.shape == 2) {
+					continue;
+				}
+				Rect tmp1 = (Rect) tmp;
+				
+				if (tmp1.getState() != 2) {
+					
+					Line temp=new Line(tmp_o, tmp1, 1);
+					if(k<core.length){
+					temp.core=core[k];
+					System.out.println("coooo:"+temp.core);
+					k++;}
+					if(l!=" "){
+					 if(s<core1.length){
+						temp.core1=core1[s];
+						System.out.println("coooo1:"+temp.core1);
+						s++;}}
+					
+					String []line1=Persist.getline1x(Main.win.myProblemDiagram).split(";");
+					int l1=line1.length;
+				  
+					if(h<Main.win.myProblemDiagram.getPhenomenon().size()-1)
+					{temp.phenomenons.add((Phenomenon)Main.win.myProblemDiagram.getPhenomenon().get(h));
+					temp.phenomenons.add((Phenomenon)Main.win.myProblemDiagram.getPhenomenon().get(h+1));
+					h+=2;}
+					tmp_d.add(temp);
+					
+					
+				}
+			}
+
+			for (int j2 = 0; j2 <= ll.size() - 1; j2++) {
+			Oval o = (Oval) ll.get(j2);
+			tmp_d.add(o);
+		}	
+
+		//for(int i=0;a[i]!=null;i++)
+			//tmp_d.add(a[i]);
+			//for(int i=0;b[i]!=null;i++)
+				//tmp_d.add(b[i]);
+		 // addline2(Main.win.myProblemDiagram,tmp_d);
+			//tmp_d.add(tmp_o);
+	
+		
+		
+		return tmp_d;
+	}
+
+	
+	
+	
+	
+	
+	
+	public static String addline2(Diagram th,Diagram now) {
+		
+		LinkedList<Rect> domlist=new LinkedList<>();
+		Line line2 = null;
+		Line line3=null;
+		domlist=Persist.getProDom2(Main.win.myProblemDiagram);
+		LinkedList<Oval> reqlist=new LinkedList<>();	
+		reqlist=Persist.getReqOval(th);
+		StringBuffer linexy=new StringBuffer();
+	 for(int i=0;i<domlist.size();i++){
+		 for(int j=0;j<reqlist.size();j++){
+		Rect n=domlist.get(i);
+		System.out.println("pppppppp");
+		System.out.println(domlist.get(i).getShortName());
+		System.out.println("pppppppp");
+		Oval m=reqlist.get(j);
+		line2 = th.findALine(n, m);
+		line3=th.findALine(m, n);
+		if(line2==null)System.out.print("mei qu ");
+		else
+		{
+		 linexy.append(line2);
+		 now.add(line2);  //新图加入边
+		 linexy.append(';');
+		}
+		if(line3==null)System.out.print("mei lai ");
+		else
+		{
+		linexy.append(line3);
+		now.add(line3);  //新图加入边
+		linexy.append(';');
+	    }
+	 }
+	 }
+		return String.valueOf(linexy);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public  void setLineName() {
+		int j = 0;
+		for (int i = 0; i < Main.win.myContextDiagram.components.size(); i++) {
+			Shape tmp = (Shape) Main.win.myContextDiagram.components.get(i);
+			if (tmp.shape == 2) {
+				String s = "" + (char) (97 + j);
+				j++;
+				((Line) tmp).name = s;
+				((Line) tmp).core = "jj";
+				((Line) tmp).core1 = "kk";
+			}
+		}
+	}
+	
+	
 }

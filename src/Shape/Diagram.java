@@ -7,6 +7,9 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+import UI.IntPane;
+import UI.Main;
+
 public class Diagram implements Serializable {
 	public LinkedList components;
 	String title;
@@ -141,7 +144,7 @@ public class Diagram implements Serializable {
 		return count;
 	}
 
-	public void setLineName() {
+	public  void setLineName() {
 		int j = 0;
 		for (int i = 0; i < this.components.size(); i++) {
 			Shape tmp = (Shape) this.components.get(i);
@@ -941,6 +944,38 @@ public class Diagram implements Serializable {
 		}
 	}
 
+	
+	
+
+	
+	
+
+/*public Diagram refreshDiagram() {
+		Diagram tmp_d = new Diagram("");
+		Persist.save(new File("tmp"), this);
+		tmp_d = Persist.load(new File("tmp"));
+		tmp_d.setTitle("ProblemDiagram2");
+		while (true) {
+			boolean zhaodao = false;
+			for (int i = 0; i <= tmp_d.components.size() - 1; i++) {
+				Shape tmp_s = (Shape) tmp_d.components.get(i);
+				if (tmp_s.shape == 1) {
+					Oval tmp_o = (Oval) tmp_s;
+					int j=tmp_o.getBiaohao()-1;
+					tmp_o.setBiaohao(j);
+					//tmp_d.delete(tmp_o);
+					zhaodao = true;
+					break;
+				}
+			}
+				return tmp_d;
+		}
+	}
+
+	*/
+
+	
+	
 	public Line findALine(Shape r1, Shape r2) {
 		Line re = null;
 		for (int i = 0; i < this.components.size(); i++) {
@@ -956,4 +991,15 @@ public class Diagram implements Serializable {
 		}
 		return re;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

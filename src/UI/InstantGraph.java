@@ -37,6 +37,7 @@ public class InstantGraph implements Serializable {
 
 	int length;// ×ø±êÖá³¤¶È
 
+	
 	public InstantGraph(Rect domain, Clock clock) {
 
 		originX = 20;

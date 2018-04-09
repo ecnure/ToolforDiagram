@@ -49,9 +49,15 @@
      }
      refresh(); }
  
+   
+   
+   
+  
+   
    protected void setCore(String core) {
      this.core = core;
    }
+
  
    protected void setCore1(String core) {
      this.core1 = core;

@@ -31,7 +31,7 @@ import javax.swing.filechooser.FileFilter;
 
 public class Main extends JFrame implements ActionListener {
 	public static String errmes = "";
-	public static int errstate = 0;// 0Ã»ï¿½ï¿½ï¿½ï¿½ 1ï¿½ß´ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ó½»»ï¿½ï¿½ï¿½ï¿½ï¿½
+	public static int errstate = 0;// 0Ã»´íÎó 1Ïß´íÎó 2ÐèÇó½»»¥´íÎó
 	JMenuBar menuBar = new JMenuBar();
 	JMenu file = new JMenu("File");
 	JMenu help = new JMenu("Help");
@@ -44,6 +44,12 @@ public class Main extends JFrame implements ActionListener {
 	JMenuItem check = new JMenuItem("Check");
 	JMenuItem show = new JMenuItem("Show");
 	JMenuItem about = new JMenuItem("About");
+	JMenu redo = new JMenu("Redo");
+	JMenuItem redoMachine=new JMenuItem("redoMachine");
+	JMenuItem redoProdomain=new JMenuItem("redoProdomain");
+	JMenuItem redoIntersaction=new JMenuItem("redoIntersaction");
+	JMenuItem redoRequirement=new JMenuItem("redoRequirement");
+	JMenuItem redoReference=new JMenuItem("redoReference");
 	DrawPane myDrawPane = new DrawPane();
 	InfoPane myInfoPane = new InfoPane();
 	public IntPane nowIntPane;
@@ -60,18 +66,19 @@ public class Main extends JFrame implements ActionListener {
 	JSplitPane rightp = new JSplitPane();
 	JToolBar toolbar = new JToolBar();
 	JToggleButton b_machine;
+	JToggleButton undomachine;
 	JToggleButton b_givendomain;
 	JToggleButton b_designeddomain;
 	JToggleButton b_requirement;
 	JToggleButton b_interface;
 	JToggleButton b_requirementconstraint;
 	JToggleButton b_requirementreference;
-	JToggleButton b_hong;
-	JToggleButton b_lan;
-	JToggleButton b_lv;
-	JToggleButton b_cheng;
-	JToggleButton b_zi;
-	JToggleButton b_cheng_y;
+	//JToggleButton b_hong;
+	//JToggleButton b_lan;
+	//JToggleButton b_lv;
+	//JToggleButton b_cheng;
+	//JToggleButton b_zi;
+	//JToggleButton b_cheng_y;
 	static Main win;
 	JFileChooser chooser;
 	String nameOfProject;
@@ -111,6 +118,8 @@ public class Main extends JFrame implements ActionListener {
 					new File(pathOfProject + "/"
 							+ this.myContextDiagram.getTitle()),
 					this.myContextDiagram);
+			File file = new File("C:\\Users\\13652\\Desktop\\newcontextdiagram.xml");
+			Persist.createXML1(file,this.myContextDiagram);
 		}
 		
 		//////////////////////////////////////////////////////
@@ -130,6 +139,8 @@ public class Main extends JFrame implements ActionListener {
 					new File(pathOfProject + "/"
 							+ this.myProblemDiagram.getTitle()),
 					this.myProblemDiagram);
+			File file = new File("C:\\Users\\13652\\Desktop\\newProblemdiagram.xml");
+			Persist.createXML(file,this.myProblemDiagram);
 		}
 
 		for (int i = 0; i < this.intPane_l.size(); i++) {
@@ -287,7 +298,7 @@ public class Main extends JFrame implements ActionListener {
 			}
 
 			public String getDescription() {
-				return "ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½(*.yb)";
+				return "¹¤³ÌÎÄ¼þ(*.yb)";
 			}
 		});
 		int r = this.chooser.showOpenDialog(this);
@@ -348,7 +359,7 @@ public class Main extends JFrame implements ActionListener {
 			/*************************************************************************/
 			File file = new File(pathOfProject);
 			String[] filelist = file.list();
-			for (int j = 0; j < filelist.length; j++) {
+		/*	for (int j = 0; j < filelist.length; j++) {
 				if ((!filelist[j].startsWith("ScenarioGraph"))
 						|| (filelist[j].length() > 14)) {
 					continue;
@@ -371,7 +382,7 @@ public class Main extends JFrame implements ActionListener {
 
 					this.myDrawPane.setState(7);
 				}
-			}
+			}*/
 
 			for (int j = 0; j < filelist.length; j++) {
 				if ((!filelist[j].startsWith("SubProblemDiagram"))
@@ -392,7 +403,7 @@ public class Main extends JFrame implements ActionListener {
 				}
 			}
 			/********************************************************************/
-			this.myDisplayPane.addPane(new MyPane(cd), cd.getTitle());
+			//this.myDisplayPane.addPane(new MyPane(cd), cd.getTitle());
 			/********************************************************************/
 		}
 	}
@@ -446,6 +457,45 @@ public class Main extends JFrame implements ActionListener {
 		if (e.getActionCommand().equals("Draw_Machine")) {
 			this.myDisplayPane.setState(3);
 		}
+		if (e.getActionCommand().equals("ReDraw_Machine")) {
+			
+			/*Line a[]=new Line[20];
+			Line b[]=new Line[20];
+			int l=0;
+			int q=0;
+			LinkedList<Rect> domlist=new LinkedList<>();
+			Line line2 = null;
+			Line line3=null;
+			domlist=Persist.getProDom2(Main.win.myProblemDiagram);
+			LinkedList<Oval> reqlist=new LinkedList<>();	
+			reqlist=Persist.getReqOval(Main.win.myProblemDiagram);
+			StringBuffer linexy=new StringBuffer();
+		 for(int i=0;i<domlist.size();i++){
+			 for(int j=0;j<reqlist.size();j++){
+			Rect n=domlist.get(i);
+			System.out.println("pppppppp");
+			System.out.println(domlist.get(i).getShortName());
+			System.out.println("pppppppp");
+			Oval m=reqlist.get(j);
+			line2 = Main.win.myProblemDiagram.findALine(n, m);
+			line3=Main.win.myProblemDiagram.findALine(m, n);
+			if(line2!=null) {a[l]=line2; l++;}
+			if(line3!=null){a[q]=line3;q++;}
+				
+			 }}
+			*/
+			
+			
+			
+			
+			//this.myProblemDiagram.refreshContextDiagram();
+		  
+		   
+			this.myDrawPane.setState(31); 
+			//this.myProblemDiagram=null;
+			//this.myDisplayPane.desk.remove(this.myDisplayPane.getMyPane("problemdiagram"));
+			JOptionPane.showMessageDialog(null, "ÇëÐÞ¸ÄÉÏÏÂÎÄÍ¼£¡"); //////////////////////////////////////////////
+		}
 		if (e.getActionCommand().equals("Draw_Requirement")) {
 			this.myDisplayPane.setState(4);
 		}
@@ -458,65 +508,86 @@ public class Main extends JFrame implements ActionListener {
 		if (e.getActionCommand().equals("Draw_RequirementReference")) {
 			this.myDisplayPane.setState(6);
 		}
-		if (e.getActionCommand().equals("Cheng_y")) {
-			if (this.nowIntPane == null) {
-				this.b_hong.setSelected(false);
-				return;
-			}
+		//if (e.getActionCommand().equals("Cheng_y")) {
+			//if (this.nowIntPane == null) {
+				//this.b_hong.setSelected(false);
+				//return;
+			//}
 
-			this.nowIntPane.setHua(1);
-		}
+//			this.nowIntPane.setHua(1);
+	//	}
 
-		if (e.getActionCommand().equals("Hong")) {
-			if (this.nowIntPane == null) {
-				this.b_hong.setSelected(false);
-				return;
-			}
+		//if (e.getActionCommand().equals("Hong")) {
+			//if (this.nowIntPane == null) {
+				//this.b_hong.setSelected(false);
+				//return;
+			//}
 
-			this.nowIntPane.setLeixing(0);
-		}
+			//this.nowIntPane.setLeixing(0);
+		//}
 
-		if (e.getActionCommand().equals("Lan")) {
-			if (this.nowIntPane == null) {
-				this.b_lan.setSelected(false);
-				return;
-			}
+		//if (e.getActionCommand().equals("Lan")) {
+			//if (this.nowIntPane == null) {
+				//this.b_lan.setSelected(false);
+				//return;
+			//}
 
-			this.nowIntPane.setLeixing(1);
-		}
+//			this.nowIntPane.setLeixing(1);
+	//	}
 
-		if (e.getActionCommand().equals("Lv")) {
-			if (this.nowIntPane == null) {
-				this.b_lv.setSelected(false);
-				return;
-			}
+		//if (e.getActionCommand().equals("Lv")) {
+			//if (this.nowIntPane == null) {
+				//this.b_lv.setSelected(false);
+				//return;
+			//}
 
-			this.nowIntPane.setLeixing(2);
-		}
+//			this.nowIntPane.setLeixing(2);
+	//	}
 
-		if (e.getActionCommand().equals("Cheng")) {
-			if (this.nowIntPane == null) {
-				this.b_cheng.setSelected(false);
-				return;
-			}
+	//	if (e.getActionCommand().equals("Cheng")) {
+		//	if (this.nowIntPane == null) {
+			//	this.b_cheng.setSelected(false);
+			//	return;
+		//	}
 
-			this.nowIntPane.setLeixing(3);
-		}
+//			this.nowIntPane.setLeixing(3);
+	//	}
 
-		if (e.getActionCommand().equals("Zi")) {
-			if (this.nowIntPane == null) {
-				this.b_zi.setSelected(false);
-				return;
-			}
+		//if (e.getActionCommand().equals("Zi")) {
+		//	if (this.nowIntPane == null) {
+			//	this.b_zi.setSelected(false);
+			//	return;
+		//	}
 
-			this.nowIntPane.setLeixing(4);
-		}
+			//this.nowIntPane.setLeixing(4);
+	//	}
 
 		if (e.getActionCommand().equals("New")) {
 			event_new();
 		}
 		if (e.getActionCommand().equals("Open")) {
 			event_open();
+		}
+		if (e.getActionCommand().equals("redoMachine")) {
+			//this.myDrawPane.setState(0);
+			this.myContextDiagram.refreshContextDiagram();
+			JOptionPane.showMessageDialog(null, "¸ÄºÃÁË£¡£¡");
+		}
+		if (e.getActionCommand().equals("redoProdomain")) {
+			this.myDrawPane.setState(1);
+			JOptionPane.showMessageDialog(null, "¸Äproblemdomains£¡");
+		}
+		if (e.getActionCommand().equals("redoIntersaction")) {
+			this.myDrawPane.setState(2);
+			JOptionPane.showMessageDialog(null, "¸ÄIntersaction£¡£¡");
+		}
+		if (e.getActionCommand().equals("redoRequirement")) {
+			this.myDrawPane.setState(4);
+			JOptionPane.showMessageDialog(null, "¸ÄRequirements£¡");
+		}
+		if (e.getActionCommand().equals("redoReference")) {
+			this.myDrawPane.setState(5);
+			JOptionPane.showMessageDialog(null, "¸ÄReference£¡");
 		}
 		if (e.getActionCommand().equals("Save")) {
 			event_save();
@@ -531,6 +602,9 @@ public class Main extends JFrame implements ActionListener {
 		if (e.getActionCommand().equals("Show")) {
 			new OntologyShow().show();
 		}
+		//if (e.getActionCommand().equals("UndoDom")) {
+			//this.myContextDiagram.delete(Persist.getProDom2(1));
+	//	}
 		if (e.getActionCommand().equals("About")) {
 			String s = "DPTool Version1.0\n1.It is a graphical supporting tool for describing and analyzing software problem and performing the problem projection.\n2.It provides guidance of problem description and projection.\n3.It brings scenario into PF for conducting a scenario based problem projection and implements scenario-extended problem description and automated problem projection.\n4.Some checking techniques are included for ensuring the quality of the requirements document.\n";
 			s = s
@@ -541,6 +615,7 @@ public class Main extends JFrame implements ActionListener {
 	}
 
 	public void setButtonState(int i) {
+		this.undomachine.setEnabled(false);
 		if (i == -2) {
 			buttonClear();
 			this.load.setEnabled(true);
@@ -560,6 +635,7 @@ public class Main extends JFrame implements ActionListener {
 			this.check.setEnabled(true);
 			this.myDrawPane.jb1.setEnabled(true);
 			this.b_machine.setEnabled(true);
+			
 		}
 		if (i == 1) {
 			buttonClear();
@@ -580,6 +656,7 @@ public class Main extends JFrame implements ActionListener {
 			this.check.setEnabled(true);
 			this.myDrawPane.jb1.setEnabled(true);
 			this.b_interface.setEnabled(true);
+			this.undomachine.setEnabled(true);
 		}
 		if (i == 3) {
 			buttonClear();
@@ -588,6 +665,7 @@ public class Main extends JFrame implements ActionListener {
 			this.open.setEnabled(true);
 			this.save.setEnabled(true);
 			this.check.setEnabled(true);
+			this.undomachine.setEnabled(true);
 			this.myDrawPane.jb1.setEnabled(true);
 		}
 		if ((i == 4) || (i == 5)) {
@@ -598,6 +676,7 @@ public class Main extends JFrame implements ActionListener {
 			this.save.setEnabled(true);
 			this.check.setEnabled(true);
 			this.myDrawPane.jb1.setEnabled(true);
+			this.undomachine.setEnabled(true);
 			this.b_requirement.setEnabled(true);
 		}
 		if (i == 5) {
@@ -609,11 +688,13 @@ public class Main extends JFrame implements ActionListener {
 			this.check.setEnabled(true);
 			this.myDrawPane.jb1.setEnabled(true);
 			this.b_requirementconstraint.setEnabled(true);
+			this.undomachine.setEnabled(true);
 			this.b_requirementreference.setEnabled(true);
 		}
 		if (i == 6) {
 			buttonClear();
 			this.load.setEnabled(true);
+			this.undomachine.setEnabled(true);
 			this.news.setEnabled(true);
 			this.open.setEnabled(true);
 			this.save.setEnabled(true);
@@ -622,16 +703,17 @@ public class Main extends JFrame implements ActionListener {
 		}
 		if (i == 7) {
 			buttonClear();
-			this.b_cheng.setEnabled(true);
-			this.b_cheng_y.setEnabled(true);
-			this.b_hong.setEnabled(true);
-			this.b_lan.setEnabled(true);
-			this.b_lv.setEnabled(true);
-			this.b_zi.setEnabled(true);
+			//this.b_cheng.setEnabled(true);
+			//this.b_cheng_y.setEnabled(true);
+			//this.b_hong.setEnabled(true);
+			//this.b_lan.setEnabled(true);
+			//this.b_lv.setEnabled(true);
+			//this.b_zi.setEnabled(true);
 			this.load.setEnabled(true);
 			this.news.setEnabled(true);
 			this.open.setEnabled(true);
 			this.save.setEnabled(true);
+			this.undomachine.setEnabled(true);
 			this.check.setEnabled(true);
 			this.myDrawPane.jb1.setEnabled(true);
 		}
@@ -642,127 +724,137 @@ public class Main extends JFrame implements ActionListener {
 			this.open.setEnabled(true);
 			this.save.setEnabled(true);
 			this.check.setEnabled(true);
+			this.undomachine.setEnabled(true);
 			this.myDrawPane.jb1.setEnabled(true);
 		}
 	}
 
 	public void buttonClear() {
-		this.b_cheng.setEnabled(false);
-		this.b_cheng_y.setEnabled(false);
+		//this.b_cheng.setEnabled(false);
+		//this.b_cheng_y.setEnabled(false);
 		this.b_designeddomain.setEnabled(false);
 		this.b_givendomain.setEnabled(false);
-		this.b_hong.setEnabled(false);
+		//this.b_hong.setEnabled(false);
 		this.b_interface.setEnabled(false);
-		this.b_lan.setEnabled(false);
-		this.b_lv.setEnabled(false);
+		//this.b_lan.setEnabled(false);
+		//this.b_lv.setEnabled(false);
 		this.b_machine.setEnabled(false);
+		this.undomachine.setEnabled(false);
 		this.b_requirement.setEnabled(false);
 		this.b_requirementconstraint.setEnabled(false);
 		this.b_requirementreference.setEnabled(false);
-		this.b_zi.setEnabled(false);
+		//this.b_zi.setEnabled(false);
 	}
 
 	public void smooth() {
 		this.b_machine.setSelected(false);
+		this.undomachine.setSelected(false);
 		this.b_givendomain.setSelected(false);
 		this.b_designeddomain.setSelected(false);
 		this.b_requirement.setSelected(false);
 		this.b_interface.setSelected(false);
 		this.b_requirementconstraint.setSelected(false);
 		this.b_requirementreference.setSelected(false);
-		this.b_lv.setSelected(false);
-		this.b_hong.setSelected(false);
-		this.b_cheng.setSelected(false);
-		this.b_zi.setSelected(false);
-		this.b_lan.setSelected(false);
-		this.b_cheng_y.setSelected(false);
+		//this.b_lv.setSelected(false);
+		//this.b_hong.setSelected(false);
+		//this.b_cheng.setSelected(false);
+		//this.b_zi.setSelected(false);
+		//this.b_lan.setSelected(false);
+		//this.b_cheng_y.setSelected(false);
 	}
 
 	private void toolBarInit() {
-		this.b_givendomain = new JToggleButton(new ImageIcon("./src/icons/rect.jpg"));//src/icons/rect.jpg
+		this.b_givendomain = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/rect.jpg"));
 		this.b_givendomain.addActionListener(this);
 		this.b_givendomain.setToolTipText("GivenDomain");
 		this.b_givendomain.setActionCommand("Draw_GivenDomain");
 
 		this.b_designeddomain = new JToggleButton(new ImageIcon(
-				"./src/icons/drect.jpg"));
+				"E:/PF related mater/TimePF/Peast/src/icons/drect.jpg"));
 		this.b_designeddomain.addActionListener(this);
 		this.b_designeddomain.setToolTipText("DesignedDomain");
 		this.b_designeddomain.setActionCommand("Draw_DesignedDomain");
 
-		this.b_machine = new JToggleButton(new ImageIcon("./src/icons/machine.jpg"));
+		this.b_machine = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/machine.jpg"));
 		this.b_machine.addActionListener(this);
 		this.b_machine.setToolTipText("Machine");
 		this.b_machine.setActionCommand("Draw_Machine");
 
-		this.b_requirement = new JToggleButton(new ImageIcon("./src/icons/r.jpg"));
+		this.undomachine=new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/ch.png"));
+		this.undomachine.addActionListener(this);
+		this.undomachine.setToolTipText("RedoFromStart");
+		this.undomachine.setActionCommand("ReDraw_Machine");
+		
+		this.b_requirement = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/r.jpg"));
 		this.b_requirement.addActionListener(this);
 		this.b_requirement.setToolTipText("Requirement");
 		this.b_requirement.setActionCommand("Draw_Requirement");
 
-		this.b_interface = new JToggleButton(new ImageIcon("./src/icons/i.jpg"));
+		this.b_interface = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/i.jpg"));
 		this.b_interface.addActionListener(this);
 		this.b_interface.setToolTipText("Interface");
 		this.b_interface.setActionCommand("Draw_Interface");
 
 		this.b_requirementconstraint = new JToggleButton(new ImageIcon(
-				"./src/icons/rc.jpg"));
+				"E:/PF related mater/TimePF/Peast/src/icons/rc.jpg"));
 		this.b_requirementconstraint.addActionListener(this);
 		this.b_requirementconstraint.setToolTipText("RequirementConstraint");
 		this.b_requirementconstraint
 				.setActionCommand("Draw_RequirementConstraint");
 
 		this.b_requirementreference = new JToggleButton(new ImageIcon(
-				"./src/icons/rr.jpg"));
+				"E:/PF related mater/TimePF/Peast/src/icons/rr.jpg"));
 		this.b_requirementreference.addActionListener(this);
 		this.b_requirementreference.setToolTipText("RequirementReference");
 		this.b_requirementreference
 				.setActionCommand("Draw_RequirementReference");
 
-		this.b_hong = new JToggleButton(new ImageIcon("./src/icons/hong.jpg"));
-		this.b_hong.addActionListener(this);
-		this.b_hong.setActionCommand("Hong");
-		this.b_hong.setToolTipText("behEna");
+		//this.b_hong = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/hong.jpg"));
+		//this.b_hong.addActionListener(this);
+		//this.b_hong.setActionCommand("Hong");
+		//this.b_hong.setToolTipText("behEna");
 
-		this.b_lan = new JToggleButton(new ImageIcon("./src/icons/lan.jpg"));
-		this.b_lan.addActionListener(this);
-		this.b_lan.setActionCommand("Lan");
-		this.b_lan.setToolTipText("behOrd");
+		//this.b_lan = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/lan.jpg"));
+		//this.b_lan.addActionListener(this);
+		//this.b_lan.setActionCommand("Lan");
+		//this.b_lan.setToolTipText("behOrd");
 
-		this.b_lv = new JToggleButton(new ImageIcon("./src/icons/lv.jpg"));
-		this.b_lv.addActionListener(this);
-		this.b_lv.setActionCommand("Lv");
-		this.b_lv.setToolTipText("synchrocity");
+		//this.b_lv = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/lv.jpg"));
+		//this.b_lv.addActionListener(this);
+		//this.b_lv.setActionCommand("Lv");
+		//this.b_lv.setToolTipText("synchrocity");
 
-		this.b_cheng = new JToggleButton(new ImageIcon("./src/icons/cheng.jpg"));
-		this.b_cheng.addActionListener(this);
-		this.b_cheng.setActionCommand("Cheng");
-		this.b_cheng.setToolTipText("expOrd");
+		//this.b_cheng = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/cheng.jpg"));
+		//this.b_cheng.addActionListener(this);
+		//this.b_cheng.setActionCommand("Cheng");
+		//this.b_cheng.setToolTipText("expOrd");
 
-		this.b_zi = new JToggleButton(new ImageIcon("./src/icons/zi.jpg"));
-		this.b_zi.addActionListener(this);
-		this.b_zi.setActionCommand("Zi");
-		this.b_zi.setToolTipText("reqEna");
+		//this.b_zi = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/zi.jpg"));
+		//this.b_zi.addActionListener(this);
+		//this.b_zi.setActionCommand("Zi");
+		//this.b_zi.setToolTipText("reqEna");
 
-		this.b_cheng_y = new JToggleButton(new ImageIcon("./src/icons/y_cheng.jpg"));
-		this.b_cheng_y.addActionListener(this);
-		this.b_cheng_y.setActionCommand("Cheng_y");
-		this.b_cheng_y.setToolTipText("Int");
+		//this.b_cheng_y = new JToggleButton(new ImageIcon("E:/PF related mater/TimePF/Peast/src/icons/y_cheng.jpg"));
+		//this.b_cheng_y.addActionListener(this);
+		//this.b_cheng_y.setActionCommand("Cheng_y");
+		//this.b_cheng_y.setToolTipText("Int");
 
 		this.toolbar.add(this.b_givendomain);
 		this.toolbar.add(this.b_designeddomain);
 		this.toolbar.add(this.b_machine);
+		//this.toolbar.add(this.undomachine);
 		this.toolbar.add(this.b_requirement);
 		this.toolbar.add(this.b_interface);
 		this.toolbar.add(this.b_requirementreference);
 		this.toolbar.add(this.b_requirementconstraint);
 		this.toolbar.addSeparator();
-		this.toolbar.add(this.b_hong);
-		this.toolbar.add(this.b_lan);
-		this.toolbar.add(this.b_lv);
-		this.toolbar.add(this.b_cheng);
-		this.toolbar.add(this.b_zi);
-		this.toolbar.add(this.b_cheng_y);
+		this.toolbar.add(this.undomachine);
+		//this.toolbar.add(this.b_hong);
+		//this.toolbar.add(this.b_lan);
+		//this.toolbar.add(this.b_lv);
+		//this.toolbar.add(this.b_cheng);
+		//this.toolbar.add(this.b_zi);
+		//this.toolbar.add(this.b_cheng_y);
 		this.toolbar.setFloatable(false);
 		this.toolbar.setOrientation(0);
 		getContentPane().add(this.toolbar, "North");
@@ -777,6 +869,7 @@ public class Main extends JFrame implements ActionListener {
 		this.menuBar.add(this.file);
 		this.menuBar.add(this.ontology);
 		this.menuBar.add(this.help);
+		this.menuBar.add(this.redo);
 		this.ontology.add(this.load);
 		this.ontology.add(this.show);
 		this.ontology.add(this.check);
@@ -784,9 +877,19 @@ public class Main extends JFrame implements ActionListener {
 		this.file.add(this.open);
 		this.file.add(this.save);
 		this.file.add(this.exit);
+		this.redo.add(this.redoMachine);
+		this.redo.add(this.redoProdomain);
+		this.redo.add(this.redoIntersaction);
+		this.redo.add(this.redoRequirement);
+		this.redo.add(this.redoReference);
 		this.help.add(this.about);
 		this.news.addActionListener(this);
 		this.open.addActionListener(this);
+		this.redoMachine.addActionListener(this);
+		this.redoProdomain.addActionListener(this);
+		this.redoIntersaction.addActionListener(this);
+		this.redoRequirement.addActionListener(this);
+		this.redoReference.addActionListener(this);
 		this.save.addActionListener(this);
 		this.load.addActionListener(this);
 		this.check.addActionListener(this);
@@ -797,6 +900,11 @@ public class Main extends JFrame implements ActionListener {
 		this.show.setEnabled(false);
 		this.news.setEnabled(false);
 		this.open.setEnabled(false);
+		this.redoMachine.setEnabled(true);
+		this.redoProdomain.setEnabled(true);
+		this.redoIntersaction.setEnabled(true);
+		this.redoRequirement.setEnabled(true);
+		this.redoReference.setEnabled(true);
 		this.save.setEnabled(false);
 		this.load.setEnabled(false);
 		this.check.setEnabled(false);

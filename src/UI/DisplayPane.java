@@ -70,7 +70,7 @@
        if (Main.win == null) {
          return;
        }
-       
+        
        /********************************************************************/
        if(tmp_mp.type!=1){
     	   //System.out.println(tmp_mp.type);
@@ -111,6 +111,10 @@
      this.desk.setSelectedComponent(jp);
    }
  
+   public void removePane(String title){
+	  int i=this.desk.indexOfTab(title);
+	   this.desk.remove(i);
+   }
    public static void main(String[] args) {
    }
  
